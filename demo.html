@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobTrack Demo</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body style="background:#f5f7fb;">
+
+  <div id="appView" style="display:grid !important;">
+    <header class="appViewHeader">
+      <img class="logo" src="img/jobTrackLogo.png" alt="">
+      <ul id="appViewMenuCon">
+        <li class="selected active">Jobs</li>
+        <li>Proj.</li>
+        <li>Quote</li>
+      </ul>
+      <div class="userBox">
+        <span id="appVUserName">Demo User</span>
+        <span id="appVCar">Demo Vehicle</span>
+      </div>
+    </header>
+
+    <div class="appViewBody">
+      <form id="frmJobDash" class="gFrm" style="display:flex;">
+        <header class="gFrmHeader">Jobcard dashboard</header>
+        <div class="gFrmBody">
+          <div>
+            <input type="text" class="gInput" placeholder="Search">
+          </div>
+
+          <div class="jobsCon">
+            <div class="card mb-3 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h5 class="mb-1">JOB-1001</h5>
+                <div class="text-muted small mb-2">Emergency call out</div>
+                <div>Client: Demo Client</div>
+                <div>Area: Great Brak River</div>
+              </div>
+            </div>
+
+            <div class="card mb-3 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h5 class="mb-1">JOB-1002</h5>
+                <div class="text-muted small mb-2">Emergency attendance</div>
+                <div>Client: Sample Client</div>
+                <div>Area: Mossel Bay</div>
+              </div>
+            </div>
+
+            <div class="card mb-3 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h5 class="mb-1">QUO-2041</h5>
+                <div class="text-muted small mb-2">Site inspection quote</div>
+                <div>Client: Demo Property Group</div>
+                <div>Area: George</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
