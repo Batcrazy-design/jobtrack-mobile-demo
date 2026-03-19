@@ -7,7 +7,8 @@
     <meta name="description" content="Software">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        
     <link rel="manifest" href="manifest.json">
     <title>JobTrack</title>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE4HMKfknmEo_IXPVR7xAYfAuPLBk3Deo&libraries=places"></script>
@@ -15,6 +16,7 @@
   </head>
   <body>
     <div id="toolTip"></div>
+    <!-- Login overlay removed per request -->
     <div id="infoBox">
       <header></header>
       <p></p>
@@ -87,23 +89,38 @@
         </div>
     </div>
     <div id="appView" data-display="grid">
-        <header class="appViewHeader">
+        <!-- Bootstrap 5 navbar (mobile-friendly, no hamburger by request) -->
+        <header class="appViewHeader d-flex justify-content-between align-items-center" role="navigation" aria-label="Main navigation">
             <img class="logo" src="img/jobTrackLogo.png" alt="">
-            <ul id="appViewMenuCon">
-                <li id="appViewBtnJobDash">Jobs</li>
-                <li id="appViewBtnProjDash">Proj.</li>
-                <li id="appViewBtnQuoteDash">Quote</li>
+            <ul id="appViewMenuCon" class="nav">
+            <li id="appViewBtnJobDash"><a class="nav-link" href="#">Jobs</a></li>
+              <li id="appViewBtnProjDash"><a class="nav-link" href="#">Proj.</a></li>
+              <li id="appViewBtnQuoteDash"><a class="nav-link" href="#">Quote</a></li>
             </ul>
             <div class="userBox">
                 <span id="appVUserName"></span>
                 <span id="appVCar"></span>
             </div>
         </header>
+        <!-- Navbar active state management: black by default, white when active -->
         <div id="appViewDropMenu" class="mainDropDown" data-status="close" tabindex="0">
-            <div id="appViewDMenuVehicleExp">Vehicle Expenses / Fuel</div>
-            <div id="appViewDMenuOfficeExp">Office Expenses</div>
-            <div id="appViewDMenuToolsExp">Tools/Equipment Expenses</div>
+            <div id="appViewDMenuVehicleExp" class="dropdownItem">Vehicle Expenses / Fuel</div>
+            <div id="appViewDMenuOfficeExp" class="dropdownItem">Office Expenses</div>
+            <div id="appViewDMenuToolsExp" class="dropdownItem">Tools/Equipment Expenses</div>
         </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var menu = document.getElementById('appViewMenuCon');
+            if (!menu) return;
+            var anchors = menu.querySelectorAll('a.nav-link');
+            anchors.forEach(function(a){
+              a.addEventListener('click', function(){
+                anchors.forEach(function(x){ x.classList.remove('active'); });
+                this.classList.add('active');
+              });
+            });
+          });
+        </script>
         <div class="appViewBody">
             <form id="frmJobDash" class="gFrm">
                 <div id="frmJobDashOfflineCon" class="offlineCon">
@@ -117,8 +134,8 @@
                         </tbody>
                     </table>
                 </div>
-                <header class="gFrmHeader">
-                      Jobcard dashboard
+                <header class="gFrmHeader gFrmHeaderCentered">
+                      <span class="gFrmHeaderTitle">Jobcard dashboard</span>
                 </header>
                 <div class="gFrmBody">
                     <div>
@@ -130,9 +147,8 @@
                 </div>
             </form>
             <form id="frmJob" class="gFrm">
-                <header class="gFrmHeader">
-                      Jobcard
-                      <span class="js_jobNo js_dbLbl"></span>
+                <header class="gFrmHeader bootstrapHeader">
+                      Jobcard <span class="dashSep">#</span><span class="js_jobNo js_dbLbl"></span>
                 </header>
                 <div class="gFrmBody">
                   <div class="btnAcceptJobCon">
@@ -269,7 +285,7 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Descr</th>
+                                <th>Description</th>
                                 <th>Qty</th>
                             </tr>
                         </thead>
@@ -358,15 +374,14 @@
                   
                 </div>
                 <div class="gFrmFooter">
-                    <div id="frmJobBtnClientSign" class="footerBtn">
+                    <div id="frmJobBtnClientSign" class="footerBtn btn btn-primary rounded">
                         Client sign off
                     </div>
                 </div>
             </form>
             <form id="frmQuote" class="gFrm">
-                <header class="gFrmHeader">
-                      Quote
-                      <span class="js_quoteNo js_dbLbl"></span>
+                <header class="gFrmHeader bootstrapHeader">
+                      Quote <span class="dashSep">#</span><span class="js_quoteNo js_dbLbl"></span>
                 </header>
                 <div class="gFrmBody">
 
@@ -377,8 +392,8 @@
                         </div>  
                     </div>  
 
-                    <div class="gFrmSectionCon">
-                        <span class="gFrmSecHeader">Site Details</span>
+                        <div class="gFrmSectionCon">
+                        <span class="gFrmSecHeader text-primary fw-bold siteDetailsHeader">Site Details</span>
                         <div class="clientName js_clientName"></div>
                         <div class="clientPhoneCon">
                             <div class="gFrmSecSubHeader">Contact numbers</div>
@@ -467,7 +482,7 @@
                             <table id="frmQuoteTblItems" class="tblItems">
                                 <thead>
                                     <tr>
-                                    <th>Descr</th>
+                                    <th>Description</th>
                                     <th>Qty</th>
                                     </tr>
                                 </thead>
@@ -531,8 +546,8 @@
 
                 </div>
                 <div class="gFrmFooter">
-                    <div id="frmQuoteBtnComplete" class="footerBtn">
-                        Servey complete
+                    <div id="frmQuoteBtnComplete" class="footerBtn btn btn-primary rounded">
+                        Survey complete
                     </div>
                 </div>
             </form>
@@ -608,7 +623,7 @@
                 </footer>
             </form>
             <form id="frmVehicleExp" class="gFrm">
-                <header class="gFrmHeader">Vehicle Expenses</header>
+                <header class="gFrmHeader centerTools">Vehicle Expenses</header>
                 <div class="gFrmBody">
                     <div class="js_expTypeCon">
                         <div class="js_tabStock" data-panel=".js_stockPanel" data-exp_type="stock">Vehicle Stock</div>

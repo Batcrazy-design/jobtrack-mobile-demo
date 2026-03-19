@@ -29,11 +29,21 @@ input:invalid{
 }
 
 table{
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+table thead th{
+  background: #f8f9fa;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-bottom: 2px solid #dee2e6;
 }
 table td{
-    border: 1px solid black;
+  padding: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .gFrm{
@@ -44,6 +54,8 @@ table td{
   overflow: auto;
 }
 .gFrmHeader{
+    justify-content: center;
+    text-align: center;
     display: flex;
     position: sticky;
     top: 0px;
@@ -53,10 +65,219 @@ table td{
     background-color: var(--lightBlue);
     color: white;
     text-shadow: 2px 2px 3px black;
-    padding: 5px 10px 5px 10px;
+    padding: 6px 12px;
+    border-radius: 8px;
     font-size: 200%;
     width: 100%;
     z-index: 1;
+}
+
+/* Bootstrap-like header override for frmJob header to match new style (mobile) */
+.gFrmHeader.bootstrapHeader {
+  background-color: #0d6efd; /* Bootstrap primary blue */
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Center Tools headers (frmVehicleExp) specifically */
+#frmVehicleExp .gFrmHeader.centerTools {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Navbar link defaults and active color to bootstrap-like behavior */
+#appViewMenuCon a.nav-link { color: #000; font-weight: 600; }
+#appViewMenuCon a.nav-link.active { color: #fff; }
+
+/* Space between job title and number badge */
+.dashSep {
+  color: #fff;
+  width: 1em;
+  display: inline-block;
+  text-align: center;
+  margin: 0 6px;
+  font-weight: 700;
+  font-family: inherit;
+}
+/* Spacing between header title text and the job number badge */
+.gFrmHeader.bootstrapHeader .js_jobNo {
+  margin-left: 10px;
+}
+
+/* Centered title for the specific Jobcard dashboard header and give rounded corners */
+.gFrmHeaderCentered {
+  justify-content: center;
+  border-radius: 6px;
+  overflow: hidden; /* visually contain rounded corners */
+}
+.gFrmHeaderCentered .gFrmHeaderTitle{
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* Card badges */
+.badge {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: .15em .4em;
+  font-size: .75rem;
+  border-radius: .25rem;
+  background: #e6f0ff;
+  color: #0d6efd;
+  border: 1px solid #b3ddff;
+  margin-left: 0;
+}
+
+/* Dropdown items inside the appView dropdown look Bootstrap-like */
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--darkBlue);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--darkBlue);
+  cursor: pointer;
+  margin: 6px 0;
+  text-align: left;
+}
+.dropdownItem:hover {
+  background-color: #f0f7ff;
+}
+/* Apply a subtle, Bootstrap-like card style to the first row content cells in Quote items */
+#frmQuoteTblItems.tblItems tbody tr:first-child td > div {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+/* Robust; emphasize first row of Quote items table with Bootstrap-like styling (enforced) */
+#frmQuoteTblItems.tblItems tbody tr:first-child td,
+#frmQuoteTblItems.tblItems tbody tr:first-child td * {
+  background-color: #f8f9fa !important;
+  font-weight: 600 !important;
+  border-radius: 6px;
+}
+#frmQuoteTblItems.tblItems tbody tr:first-child td:first-child {
+  border-top-left-radius: 6px;
+}
+#frmQuoteTblItems.tblItems tbody tr:first-child td:last-child {
+  border-top-right-radius: 6px;
+}
+
+/* Modern highlight for first row in Quote items table (Bootstrap-like) */
+#frmQuoteTblItems.tblItems tbody tr:first-child td {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+#frmQuoteTblItems.tblItems tbody tr:first-child td:first-child {
+  border-top-left-radius: 6px;
+}
+#frmQuoteTblItems.tblItems tbody tr:first-child td:last-child {
+  border-top-right-radius: 6px;
+}
+#frmQuoteTblItems.tblItems tbody tr:first-child:hover td {
+  background-color: #eef6ff;
+}
+
+/* Bootstrap-like badge styling for client name on Job Dashboard (cards) */
+#frmJobDashJobsCon .jobItem .js_client {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #0d6efd;
+  border-radius: 6px;
+  background: #fff;
+  color: #0d6efd;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.tblItems-bootstrap {
+  border-collapse: collapse;
+}
+/* Bootstrap-like header for items table */
+#frmJobTblItems.tblItems {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#frmJobTblItems.tblItems thead th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.75rem;
+  font-weight: 600;
+}
+#frmJobTblItems.tblItems td {
+  padding: 0.75rem;
+}
+
+/* Hours table (frmJobTblHours) header styling for bootstrap-like look */
+#frmJobTblHours thead th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.75rem;
+  font-weight: 600;
+}
+.badge.distanceBadge{ background:#e6f0ff; color:#0d6efd; border-color:#b3ddff; }
+.badge.statusBadge{ background:#e8f5e9; color:#198754; border-color:#c8e6c9; }
+
+/* Align distance and priority into fixed-width columns for card consistency */
+#frmJobDashJobsCon .jobItem .rowBar { display:flex; align-items:center; }
+#frmJobDashJobsCon .jobItem .rowBar .distance{ flex: 1 1 auto; min-width: 90px; display:flex; justify-content:center; align-items:center; }
+#frmJobDashJobsCon .jobItem .rowBar .priority{ width: 90px; display:flex; align-items:center; justify-content:center; }
+
+/* Enhance badge behavior and table styling for items list */
+/* New: make distance badge fill its slot and center text */
+.badge {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: .15em .4em;
+  font-size: .75rem;
+  border-radius: .25rem;
+  background: #e6f0ff;
+  color: #0d6efd;
+  border: 1px solid #b3ddff;
+  margin-left: 0;
+}
+
+/* Simple, clean table styling for job items */
+#frmJobTblItems.tblItems {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+}
+#frmJobTblItems.tblItems thead th {
+  background: var(--lightBlue);
+  border: 1px solid var(--darkBlue);
+  padding: 6px 8px;
+  text-align: left;
+}
+#frmJobTblItems.tblItems td { border: 1px solid var(--darkBlue); padding: 6px 8px; }
+#frmJobTblItems.tblItems tbody tr:nth-child(odd) { background: #f7f7f7; }
+#frmJobTblItems.tblItems tbody tr:hover { background: #eaf3ff; }
+
+/* Job dashboard cards styling (UI-only) */
+.jobItem {
+  border-radius: 12px;
+  border: 1px solid var(--darkBlue);
+  padding: 8px;
+  margin: 8px 0;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  display: block;
+}
+.jobItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .gFrmClose{
     height: 30px;
@@ -89,7 +310,28 @@ table td{
     border: 1px solid var(--darkBlue);
     font-size: 130%;
     font-weight: bold;
+    border-radius: 8px;
+    padding: 6px 12px;
 }
+/* Make the My Client Name area look like a Bootstrap-style badge/button for emphasis */
+#frmQuote .clientName.js_clientName {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #0d6efd;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #0d6efd;
+  font-weight: 700;
+}
+/* Bootstrap-like rounded header for Site Details blocks within forms */
+.gFrmSectionCon .gFrmSecHeader {
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+
+/* Spacing between My Jobs header and the search bar on the Job Dashboard */
+#frmJobDash .gFrmBody > div:first-child { margin-top: 12px; }
 .gFrmSecSubHeader{
     display: flex;
     justify-content: flex-start;
@@ -485,17 +727,24 @@ table td{
     height: 100%;
 }
 
-#appView .mainDropDown{
-    max-height: 0px;
-    position: absolute;
-    background-color: white;
-    z-index: 5;
-    top: 60px;
-    width: 300px;
-    box-shadow: 2px 2px 5px black;
-    box-sizing: border-box;
-    overflow: hidden;
-    transition: max-height 0.5s;
+#appViewDropMenu.mainDropDown, #appView .mainDropDown{
+  max-height: 0px;
+  position: absolute;
+  background-color: white;
+  z-index: 5;
+  top: 60px;
+  width: 300px;
+  box-shadow: 2px 2px 5px black;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  border-radius: 8px;
+  padding: 8px;
+}
+/* When closed, remove padding to avoid a white block occupying space */
+#appViewDropMenu.mainDropDown[data-status="close"], #appView .mainDropDown[data-status="close"]{
+  padding: 0;
+  border: none;
 }
 #appView .mainDropDown div:first-of-type{
     margin-top: 10px;
@@ -548,10 +797,20 @@ table td{
     height: 35px;
 }
 
-#frmJobDash .jobsCon .header{
-    font-size: 120%;
-    text-decoration: underline;
-    font-weight: bold;
+/* Center headers for My Jobs / Other Jobs to improve visual balance on mobile */ 
+/* Centered headers for My Jobs / Other Jobs (look like gFrmSecHeader) */
+#frmJobDash .jobsCon .header,
+#frmJobDash .jobsCon .header.otherHeader {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--darkBlue);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 130%;
+  font-weight: bold;
+  text-shadow: 0.5px 0.5px 1px white;
+  text-decoration: none;
+  background: #fff;
 }
 #frmJobDash .jobsCon .otherHeader{
     margin-top: 10px;
@@ -600,15 +859,15 @@ table td{
 }
 
 #frmJobDash .jobItem .headerRow{
-    position: absolute;
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    top: -13px;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-    padding: 0 10px 0 0;
+    padding: 6px 0;
+    margin-bottom: 6px;
 }
 #frmJobDash .jobItem .headerRow .rowBar{
     width: 100%;
@@ -676,6 +935,8 @@ table td{
     border-bottom: 10px;
     padding: 5px;
     margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 #frmQuote .addPhotoCon{
@@ -714,10 +975,14 @@ table td{
     flex-flow: row nowrap;
     width: 200px;
 }
+/* Revert icon sizing to original simple sizing (50x50 for Quote icons) */
 #frmQuote .contactImg{
-    width: 50px;
-    margin-left: 10px;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #frmQuote .tblCaption{
@@ -858,6 +1123,8 @@ width: 100%;
     border-bottom: 10px;
     padding: 5px;
     margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 #frmJob .secHeader{
     display: flex;
@@ -935,8 +1202,11 @@ width: 100%;
 }
 #frmJob .contactImg{
     width: 50px;
+    height: 50px;
     margin-left: 10px;
     border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #frmQuote .tblCaption{
@@ -1441,4 +1711,61 @@ width: 100%;
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+/* Navbar simplified for mobile-first (no hamburger) - no collapse rules yet */
+/* Navbar links styling: white text and slightly bolder for mobile header */
+#appViewMenuCon .nav-link{
+  color: #fff !important;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+/* Navbar links styling: black by default, white when active/selected for mobile header */
+/* Use !important to ensure visibility against Bootstrap defaults in mobile view */
+#appViewMenuCon .nav-link{
+  color: #000 !important;
+  font-weight: 600;
+  text-shadow: none;
+}
+/* Selected state: white text when active/selected (no change to background yet) */
+#appViewMenuCon .nav-link.active,
+#appViewMenuCon .nav-link[aria-current="page"]{
+  color: #fff !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+/* Improve readability of user info in header (mobile/compact view) */
+#appVUserName, #appVCar {
+  font-weight: 700;
+  font-size: 1.15rem; /* slightly larger for legibility on small screens */
+}
+#frmJobDash .jobsCon .header { margin-top: 12px; margin-bottom: 20px; }
+#frmJobDash .jobsCon .header.otherHeader { margin-top: 12px; margin-bottom: 20px; }
+/* Target precise Quote form client name badge path for consistent Bootstrap look */
+#frmQuote > div.gFrmBody > div:nth-child(2) > div.clientName.js_clientName {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #0d6efd;
+  border-radius: 6px;
+  background: #fff;
+  color: #0d6efd;
+  font-weight: 700;
+}
+/* Site Details header black text for Quote form */
+#frmQuote .siteDetailsHeader {
+  color: #000 !important;
+  text-shadow: none;
+}
+
+/* Quote: ensure client name text is black for readability */
+#frmQuote .clientName.js_clientName {
+  color: #000 !important;
+}
+
+/* Ensure page header inside Quote remains bold as before */
+.js_tabStock { border-radius: 6px; }
+.tabBarRound {
+  border-radius: 6px;
+}
+/* Fuel tab rounding */
+[data-panel=".js_fuelPanel"] {
+  border-radius: 6px;
 }

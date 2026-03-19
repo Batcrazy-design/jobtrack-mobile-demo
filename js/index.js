@@ -7,43 +7,6 @@ window.sessionStorage.startApp = "yes";
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('mobileJobTrack-sw.js').then(function(registration) {
     console.log('Service worker registered successfully.');
-	
-	window.sessionStorage.startApp = "yes";
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('mobileJobTrack-sw.js').then(function(registration) {
-    console.log('Service worker registered successfully.');
-  });
-}
-
-/* ===== GitHub demo mode ===== */
-if (location.hostname.includes('github.io')) {
-  window.addEventListener('load', function () {
-    const fullView = document.getElementById('fullView');
-    const appView = document.getElementById('appView');
-    const userName = document.getElementById('appVUserName');
-    const car = document.getElementById('appVCar');
-    const jobDashBtn = document.getElementById('appViewBtnJobDash');
-    const jobDashFrm = document.getElementById('frmJobDash');
-
-    if (fullView) fullView.style.display = 'none';
-    if (appView) appView.style.display = 'grid';
-    if (userName) userName.textContent = 'Demo User';
-    if (car) car.textContent = 'Demo Vehicle';
-
-    document.querySelectorAll('#appViewMenuCon li').forEach(li => {
-      li.classList.remove('selected', 'active');
-    });
-
-    if (jobDashBtn) jobDashBtn.classList.add('selected', 'active');
-
-    document.querySelectorAll('.appViewBody .gFrm').forEach(frm => {
-      frm.style.display = 'none';
-    });
-
-    if (jobDashFrm) jobDashFrm.style.display = 'flex';
-  });
-}
     
     // Listen for new service worker installations
     registration.addEventListener('updatefound', function() {
@@ -2024,13 +1987,17 @@ function FrmJobDashUtils() {
             jobNo.style.backgroundColor = row.jobColor;
 
             if (sett.gps) {
-                item.querySelector(".distance").innerText = (row.distance != 123456789) ? `${row.distance}km` : 'NA';
+                // Use a badge for distance
+                let distEl = item.querySelector(".distance");
+                distEl.innerHTML = `<span class="badge distanceBadge">${(row.distance != 123456789) ? `${row.distance}km` : 'NA'}</span>`;
             }
+            // Keep priority as text, but show as a badge for visibility can be added later if desired
             item.querySelector(".priority").innerText = `Prio: ${row.disPriority}`;
             item.querySelector(".js_client").innerText = row.siteClient;
             item.querySelector(".js_clientAdd").innerText = row.clientAdd;
-            
-            item.querySelector(".js_status").innerText = row.disProcess;
+            // Status badge for readability
+            let statusEl = item.querySelector(".js_status");
+            statusEl.innerHTML = `<span class="badge statusBadge">${row.disProcess}</span>`;
             if (row.disAvailStart != "") {
                 item.querySelector(".js_availStart").innerText = row.disAvailStart;
                 item.querySelector(".js_availEnd").innerText = row.disAvailEnd;
