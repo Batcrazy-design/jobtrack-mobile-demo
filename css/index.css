@@ -1,0 +1,1444 @@
+:root{
+    --black: black;
+    --white: white;
+    --darkGray: darkGray;
+    --darkBlue: #005cac;
+    --lightBlue: #01aff1;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+
+input {
+    padding-left: 5px;
+}
+input:invalid{
+    background-color: pink;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+table td{
+    border: 1px solid black;
+}
+
+.gFrm{
+  display: none;
+  width: 100%;
+  max-height: 100%;
+  background-color: white;
+  overflow: auto;
+}
+.gFrmHeader{
+    display: flex;
+    position: sticky;
+    top: 0px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--lightBlue);
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    padding: 5px 10px 5px 10px;
+    font-size: 200%;
+    width: 100%;
+    z-index: 1;
+}
+.gFrmClose{
+    height: 30px;
+    cursor: pointer;
+}
+.gFrmEdit{
+  height: 30px;
+  cursor: pointer;
+}
+.gFrmSectionCon{
+    width: 100%;
+    border: 1px solid var(--darkBlue);
+    box-shadow: 2px 2px 5px black;
+    border-bottom: 10px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.gFrmInput{
+    height: 30px;
+    display: block;
+    border: 1px solid black;
+    padding-left: 5px;
+    width: 100%;
+}
+.gFrmSecHeader{
+    display: flex;
+    justify-content: center;
+    text-shadow: 0.5px 0.5px 1px white;
+    border: 1px solid var(--darkBlue);
+    font-size: 130%;
+    font-weight: bold;
+}
+.gFrmSecSubHeader{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 5px;
+}
+
+.gDoubleInputCon{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.gDoubleInputCon label{
+    width: 48%;
+}
+
+
+.gDataTbl{
+    width: 100%;
+    margin-top: 10px;
+}
+.gDataTbl tr{
+    width: 100%;
+}
+.gDataTbl, .gDataTbl th, .gDataTbl td{
+    background-color: white;
+    border: 1px solid var(--grey);
+    border-collapse: collapse;
+}
+
+.gBtnBox{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.gBtnSave{
+    background-color: var(--darkBlue);
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+}
+.gBtnDel{
+    background-color: white;
+    color: red;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    border: 1px solid red;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.gBtnBack{
+    background-color: white;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+}
+.gBtnPhoto{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    background-image: url('../img/btnPhoto.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: 1px solid var(--lightBlue);
+    margin-top: 10px;
+}
+
+.gMask{
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.gLoader{
+    position: fixed;
+    border: 8px solid var(--darkBrown);
+    border-radius: 50%;
+    border-top: 8px solid var(--lightBrown);
+    border-bottom: 8px solid var(--lightBrown);
+    width: 60px;
+    height: 60px;
+    top: calc(50% - 30px);
+    left: calc(50% - 10px);
+    margin-left: -30px;
+    margin-top: -30px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+.gFloatView{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.gFloatScreen{
+    position: absolute;
+    z-index: 3;
+    max-height: 83vh;
+    max-width: 95%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.gAlignCener{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.gLabel{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.gLabel input{
+    height: 30px;
+    display: block;
+    border: 1px solid black;
+    padding-left: 5px;
+    width: 100%;
+}
+.gLabel select{
+    height: 30px;
+    display: block;
+    border: 1px solid black;
+    padding-left: 5px;
+    width: 100%;
+}
+.gInput {
+    height: 30px;
+    display: block;
+    border: 1px solid black;
+    padding-left: 5px;
+    width: 100%;
+}
+
+.gSideLabel{
+    display: flex;
+    flex-flow: row nowrap;
+
+}
+
+.gFrmBody{
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+}
+
+.gFrmFooter{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    border-top: 1px solid var(--darkBlue);
+    background-color: white;
+}
+
+.gjs_textareaCon{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.gjs_textareaCon textarea{
+  resize: none;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--white);
+  box-sizing: border-box;
+  min-height: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 7.5px;
+}
+.gjs_textareaCon span{
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    color: black;
+    font-size: 8px;
+}
+
+
+#toolTip {
+  padding: 5px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--white);
+  display: none;
+  z-index: 10;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#infoBox {
+  width: 250px;
+  color: var(--white);
+  background-color: var(--darkBlue);
+  border-radius: 15px;
+  z-index: 4;
+  display: none;
+  position: absolute;
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+  font-family: montserrat-light;
+}
+#infoBox header {
+  margin-top: 15px;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 24px;
+}
+#infoBox img {
+  margin-bottom: 3px;
+  height: 50px;
+  width: 50px;
+}
+#infoBox p {
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 24px;
+}
+#infoBox .btnBox {
+  margin-top: 10px;
+  width: 100%;
+  clear: both;
+}
+#infoBox .btnBox div {
+  margin-bottom: 10px;
+  color: var(--white);
+  height: 40px;
+  line-height: 37px;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#dataListCon {
+  position: absolute;
+  display: none;
+  background-color: var(--white);
+  border: 1px solid var(--darkBlue);
+  z-index: 4;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+#dataListCon .googleLogo{
+    width: 144px;
+    height: 18px;
+    float: right;
+}
+#dataList {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  overflow-y: auto;
+}
+#dataList tr {
+  position: relative;
+  height: 40px;
+}
+#dataList td {
+  text-align: left;
+  border-bottom: 1px solid var(--darkGrey);
+  height: 25px;
+  cursor: pointer;
+  width: 100%;
+  padding-left: 5px;
+  vertical-align: middle;
+}
+#dataList td:hover {
+    background-color: var(--darkBlue);
+    color: white;
+}
+#dataList img {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
+#dataList .btnAdd{
+    background-color: var(--lightBlue);
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 200px;
+    text-align: center;
+}
+
+#fullView{
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+#fullView .fullVFrmCon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+#fullView .fullVHeader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#fullView .logo{
+    max-height: 50px;
+}
+.gFullFrm{
+    display: none;
+    max-width: 300px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px gray;
+}
+
+#appView{
+    display: none;
+    grid-template-areas:
+      'header'
+      'body';
+    grid-template-rows: 60px auto;
+    height: 100%;
+}
+#appView .appViewHeader{
+    grid-area: header;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+}
+#appView .appViewHeader .logo{
+    max-width: 70px;
+}
+#appView .appViewHeader ul{
+    list-style: none;
+}
+#appView .appViewHeader ul li{
+    display: inline-block;
+    border-radius: 10px;
+    color: black;
+    padding: 5px;
+    font-size: 110%;
+    border: 1px solid black;
+}
+#appView .appViewHeader ul li.selected{
+    background-color: var(--darkBlue);
+    color: white;
+}
+
+#appView .appViewHeader ul li:nth-child(n+2){
+    margin-left: 5px;
+}
+#appView .appViewHeader .userBox{
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 60%;
+}
+
+#appView .appViewHeader .userCon{
+    justify-self: end;
+    width: 150px;
+    height: 100%;
+}
+
+#appView .mainDropDown{
+    max-height: 0px;
+    position: absolute;
+    background-color: white;
+    z-index: 5;
+    top: 60px;
+    width: 300px;
+    box-shadow: 2px 2px 5px black;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+#appView .mainDropDown div:first-of-type{
+    margin-top: 10px;
+}
+#appView .mainDropDown div{
+    margin-bottom: 10px;
+}    
+#appView .mainDropDown div{
+    border: 1px solid var(--darkBlue);
+    box-shadow: 1px 1px 3px black;
+    width: 100%;
+    padding: 10px;
+}
+
+
+#appView .userCon .signUpCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 98%;
+
+}
+
+#appView .appViewBody{
+    grid-area: body;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#frmJobDash{
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#frmJobDash .offlineCon thead{
+    background-color: lightgray;
+    text-align: left;
+}
+#frmJobDash .offlineCon tr:nth-child(n+2){
+    border-top: 1px solid var(--darkBlue);
+}
+#frmJobDash .offlineCon img{
+    height: 35px;
+}
+
+#frmJobDash .jobsCon .header{
+    font-size: 120%;
+    text-decoration: underline;
+    font-weight: bold;
+}
+#frmJobDash .jobsCon .otherHeader{
+    margin-top: 10px;
+}
+
+#frmJobDash .jobItem{
+    display: flex;
+    position: relative;
+    flex-flow: column nowrap;
+    border: 1px solid var(--darkBlue);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px black;
+    padding: 7px 5px 5px 5px;
+    margin-top: 15px;
+}
+
+/*#frmJobDash .jobItem .jobNo{
+    position: absolute;
+    top: -12px;
+    left: 5px;
+    padding: 0px 5px 0px 5px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    text-shadow: 1px 1px 3px white, -1px -1px 3px white
+
+}
+#frmJobDash .jobItem .priority{
+    position: absolute;
+    top: -12px;
+    right: 5px;
+    padding: 0px 5px 0px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+
+}*/
+#frmJobDash .jobItem .apptDateLbl{
+    font-weight: bold;
+}
+
+#frmJobDash .jobItem .availTimeCon{
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#frmJobDash .jobItem .headerRow{
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    top: -13px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 10px 0 0;
+}
+#frmJobDash .jobItem .headerRow .rowBar{
+    width: 100%;
+}
+#frmJobDash .jobItem .headerRow .jobNo{
+    padding: 0px 5px 0px 5px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    text-shadow: 1px 1px 3px white, -1px -1px 3px white
+}
+#frmJobDash .jobItem .headerRow .distance{
+    background-color: white;
+}
+#frmJobDash .jobItem .headerRow .priority{
+    background-color: white;
+    padding: 0px 5px 0px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+#frmJobDash .jobItem .rowBar{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+/*FORM QUOTE*/
+#frmQuote .secHeader{
+    font-size: 130%;
+    font-weight: bold;
+}
+
+#frmQuote .btnAcceptJobCon{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    
+}
+#frmQuote .btnAcceptJob{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--darkBlue);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--lightBlue);
+}
+#frmQuote .btnAcceptJob span{
+    color: white;
+    font-weight: bold;
+    font-size: 130%;
+}
+
+#frmQuote .sectionCon{
+    border: 1px solid var(--darkBlue);
+    box-shadow: 2px 2px 5px black;
+    border-bottom: 10px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+#frmQuote .addPhotoCon{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#frmQuote .btnPhoto{
+    height: 40px;
+}
+
+
+#frmQuote .clientName{
+    font-size: 130%;
+    width: 100%;
+    margin-top: 3px;
+    text-align: center;
+}
+#frmQuote .contactCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-bottom: 1px solid var(--lightBlue);
+    padding: 5px 0 5px 0;
+}
+#frmQuote .contactCon .phoneCon{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+#frmQuote .contactCon .imgsCon{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 200px;
+}
+#frmQuote .contactImg{
+    width: 50px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+#frmQuote .tblCaption{
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+}
+#frmQuote .gjs_textareaCon{
+    margin-bottom: 0;
+}
+#frmQuote .qtyInput{
+    width: 50px;
+}
+
+#frmQuote thead{
+    background-color: var(--lightBlue);
+}
+#frmQuote tr.disable{
+    opacity: 0.6;
+}
+
+#frmQuote .tblItems td:nth-child(1){
+    width: auto;
+}
+#frmQuote .tblItems td:nth-child(2){
+    width: 50px;
+    font-size: 80%;
+}
+#frmQuote .tblItems .js_chkBox{
+    width: 20px;
+    height: 20px;
+}
+
+
+#frmQuote .estHoursCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmQuote .estHoursCon span{
+    margin-left: 10px;
+}
+#frmQuote .estHours{
+    width: 80px;
+}
+
+
+#frmQuote .invCon .invPhoto{
+    max-height: 150px;
+    max-width: 80%;
+}
+#frmQuote .invCardCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmQuote .invCardCon .invCardInput{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+#frmQuote .tblInv td:nth-child(2){
+    width: 70px;
+}
+#frmQuote .tblInv td:nth-child(3){
+    width: 40px;
+    text-align: center;
+}
+#frmQuote .tblInv .btnPhoto{
+    height: 30px;
+    width: 30px;
+}
+
+
+#frmQuote .notesCon{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    width: 100%;
+}
+#frmQuote .noteCon{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    margin-top: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px black;
+    width: 100%;
+    pointer-events: all;
+}
+#frmQuote .noteCon.disable{
+    pointer-events: none;
+}
+#frmQuote .noteCon .userName{
+    float: right;
+}
+
+#frmQuote .noteCon .textPhotoCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmQuote .noteCon textarea{
+width: 100%;
+    min-height: 50px;
+    overflow-y: hidden; /* Hide the scrollbar as it expands */
+    resize: none;      /* Disable the manual drag handle if you want it purely automatic */
+    padding: 10px;
+    box-sizing: border-box;
+}
+#frmQuote .noteCon img{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+#frmQuote .js_btnDel{
+    width: 30px;
+}
+
+#frmQuote .footerBtn{
+    padding: 5px;
+    color: white;
+    background-color: var(--darkBlue);
+}
+
+
+/*FORM JOBCARD*/
+
+#frmJob .sectionCon{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    border: 1px solid var(--darkBlue);
+    box-shadow: 2px 2px 5px black;
+    border-bottom: 10px;
+    padding: 5px;
+    margin-top: 10px;
+}
+#frmJob .secHeader{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    font-size: 130%;
+    font-weight: bold;
+}
+
+
+#frmJob .doubleInput{
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    gap: 5px;
+}
+
+#frmJob .btnAcceptJobCon{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    
+}
+#frmJob .btnAcceptJob{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--darkBlue);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--lightBlue);
+}
+#frmJob .btnAcceptJob span{
+    color: white;
+    font-weight: bold;
+    font-size: 130%;
+}
+
+#frmJob .addPhotoCon{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#frmJob .btnPhoto{
+    height: 40px;
+}
+
+
+#frmJob .clientName{
+    font-size: 110%;
+    text-align: center;
+    width: 100%;
+}
+#frmJob .contactCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-bottom: 1px solid var(--lightBlue);
+    padding: 5px 0 5px 0;
+}
+#frmJob .contactCon .phoneCon{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+#frmJob .contactCon .imgsCon{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 200px;
+}
+#frmJob .contactImg{
+    width: 50px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+#frmQuote .tblCaption{
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+}
+#frmQuote .gjs_textareaCon{
+    margin-bottom: 0;
+}
+#frmQuote .qtyInput{
+    width: 50px;
+}
+
+#frmJob thead{
+    background-color: var(--lightBlue);
+}
+#frmJob tr.disable{
+    opacity: 0.6;
+}
+
+#frmJob .timerCon{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5px;
+}
+#frmJob .timerCon .btnStartTimer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    border-radius: 5px;
+    height: 40px;
+    background-color: var(--darkBlue);
+    color: white;
+}
+#frmJob .timerCon div.disable{
+    opacity: 0.4;
+}
+#frmJob .timerCon .btnEndTimer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    border-radius: 5px;
+    height: 40px;
+    background-color: red;
+    color: white;
+}
+
+.timerDisplay{
+    width: 100%;
+    text-align: center;
+    font-size: 130%;
+    font-weight: bold;
+}
+
+#frmJob .tblJobHoursCon{
+    max-height: 300px;
+    overflow-y: auto;
+}
+#frmJob .tblHours td{
+    border-bottom: 1px solid var(--darkBlue);
+    padding: 10px 0 10px 0;
+}
+
+#frmJob .tblHours .timesCon{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+}
+#frmJob .tblHours .timeCon{
+    display: flex;
+    flex-flow: row nowrap;
+}
+#frmJob .tblHours .timeCon input{
+    width: 200px;
+}
+#frmJob .tblHours .downArrow{
+    height: 20px;
+}
+#frmJob .tblHours .btnDel{
+    width: 50px;
+}
+
+#frmJob .report{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 3px;
+}
+
+#frmJob .tblItems td:nth-child(1){
+    width: 25px;
+}
+#frmJob .tblItems td:nth-child(2){
+    width: auto;
+}
+#frmJob .tblItems td:nth-child(3){
+    width: 50px;
+    font-size: 80%;
+}
+#frmJob .tblItems .js_chkBox{
+    width: 20px;
+    height: 20px;
+}
+
+
+#frmJob .invCon .invPhoto{
+    max-height: 150px;
+    max-width: 80%;
+}
+#frmJob .invCardCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmJob .invCardCon .invCardInput{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#frmJob .tblSupInvsCon{
+    max-height: 300px;
+    overflow-y: auto;
+}
+#frmJob .tblInv td:nth-child(2){
+    width: 70px;
+}
+#frmJob .tblInv td:nth-child(3){
+    width: 40px;
+    text-align: center;
+}
+#frmJob .tblInv .btnPhoto{
+    height: 30px;
+    width: 30px;
+}
+
+#frmJob .notesCon{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+}
+#frmJob .noteCon{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    margin-top: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px black;
+    width: 100%;
+    pointer-events: all;
+}
+#frmJob .noteCon.disable{
+    pointer-events: none;
+}
+#frmJob .noteCon .userName{
+    float: right;
+}
+
+#frmJob .noteCon .textPhotoCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmJob .noteCon textarea{
+    width: 100%;
+}
+#frmJob .noteCon img{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+#frmJob .attachsCon{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+
+}
+#frmJob .attachCon{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    margin-top: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px black;
+    width: 100%;
+    pointer-events: all;
+}
+#frmJob .attachCon.disable{
+    pointer-events: none;
+}
+#frmJob .attachCon .userName{
+    float: right;
+}
+
+#frmJob .attachCon .textPhotoCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmJob .attachCon .title{
+    width: 100%;
+}
+#frmJob .attachCon img{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+
+
+#frmJob .js_btnDel{
+    width: 30px;
+}
+
+#frmJob .footerBtn{
+    padding: 5px;
+    color: white;
+    background-color: var(--darkBlue);
+}
+
+/*FORM JOB SIGNITURE*/
+#frmJobSign table tbody tr{
+    border-bottom: 1px solid var(--darkBlue);
+}
+
+#frmJobSign table .jobCon div:nth-child(1){
+    font-weight: bold;
+}
+#frmJobSign table .jobCon div:nth-child(2){
+    font-size: 80%;
+    margin-left: 5px;
+}
+
+
+/*FORM SIGNITURE*/
+#frmSig{
+    border: none;
+    box-shadow: none;
+    width: 100%;
+}
+
+#frmSig .frmDetails{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+#frmSig .frmDetails .sigCon{
+    background-color: var(--white);
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+#frmSig .canvas{
+    border: 2px solid black;
+    display: block;
+    background-color: transparent;
+    touch-action: none;
+    border-radius: 7px;
+    width: 100%;
+}
+
+#frmSig .clearSigCon{
+    margin-bottom: 10px;
+}
+
+/*FORM PHOTO*/
+#frmPhoto .imgCon{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+#frmPhoto .img{
+    max-height: 300px;
+    max-width: 100%;
+}
+
+/*FORM VEHICLE EXPENSES*/
+#frmVehicleExp .js_expTypeCon{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+#frmVehicleExp .js_expTypeCon div{
+    border: 1px solid var(--darkBlue);
+    padding: 5px;
+}
+#frmVehicleExp .js_expTypeCon div.selected{
+    background-color: var(--darkBlue);
+    color: white;
+}
+
+#frmVehicleExp .doubleInput{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#frmVehicleExp .invCardCon{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#frmVehicleExp .invCardCon .invCardInput{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+
+
+#frmVehicleExp .photoCon{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#frmVehicleExp .photoCon .invPhoto{
+    max-height: 150px;
+    max-width: 90%;
+}
+
+
+
+#frmGetGPS .btnGetGPSCon{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    
+}
+#frmGetGPS .btnGetGPS{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--darkBlue);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--lightBlue);
+}
+#frmGetGPS .btnGetGPS span{
+    color: white;
+    font-weight: bold;
+    font-size: 130%;
+}
+#frmGetGPS .location-card {
+    max-width: 350px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid #e0e0e0;
+}
+
+#frmGetGPS .location-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+#frmGetGPS .data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+#frmGetGPS .label {
+    color: #666;
+    font-weight: 600;
+}
+
+#frmGetGPS .value {
+    color: #007bff;
+    font-family: 'Courier New', Courier, monospace; /* Monospace for numbers */
+    font-weight: bold;
+}
+
+#frmGetGPS .btn-primary {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#frmGetGPS .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+/* 1. Main Form Container - Full Screen Overlay */
+#frmFileViewer.gFrm {
+    display: none; /* Controlled by your display() function */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.95); /* Deep dark for contrast */
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    overflow-y: auto;
+    /* Handles iPhone notch/safe areas */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    box-sizing: border-box;
+}
+
+/* 2. Header Bar */
+#frmFileViewer .viewer-header {
+    height: 60px;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    flex-shrink: 0; /* Prevents header from squashing */
+}
+
+/* 3. Close Button (Thumb-Friendly) */
+#frmFileViewer .btnClose {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#frmFileViewer .btnClose:active {
+    background-color: #c9302c; /* Visual feedback for touch */
+}
+
+/* 4. Body Area (The Content Container) */
+#frmFileViewer .viewer-body {
+    flex-grow: 1; /* Fills remaining screen space */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* We handle scrolling inside iframes */
+    background: #000;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+    overflow-y: auto;
+}
+
+/* 5. Responsive Media Styles */
+#frmFileViewer .viewer-body img {
+    max-width: 98%;
+    max-height: 98%;
+    object-fit: contain; /* Keeps aspect ratio of horse/site photos */
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+#frmFileViewer .viewer-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white; /* Contrast for PDFs */
+    min-height: 100%; /* Force height for mobile layout engines */
+}
+
+/* 6. Utility: Fade-in Animation */
+#frmFileViewer .gFrm[style*="display: block"] {
+    display: flex !important; /* Forces flex when shown */
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
