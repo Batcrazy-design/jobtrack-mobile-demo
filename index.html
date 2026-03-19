@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta charset="utf-8">
+    <link rel='shortcut icon' href='favicon.png' type='image/x-icon'>
+    <meta name="description" content="Software">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <title>JobTrack</title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE4HMKfknmEo_IXPVR7xAYfAuPLBk3Deo&libraries=places"></script>
+
+  </head>
+  <body>
+    <div id="toolTip"></div>
+    <div id="infoBox">
+      <header></header>
+      <p></p>
+      <img>
+      <p></p>
+      <div id="infoBoxBtnCon" class="btnBox">
+        <div id="infoBoxBtn1"></div>
+        <div id="infoBoxBtn2"></div><br>
+        <div id="infoBoxBtn3"></div>
+      </div>
+      <p></p>
+    </div>
+    <div id="floatViewMask" class="gFloatView"></div>
+    <div id="dataListCon">
+      <table id="dataList">
+        <tbody>
+
+        </tbody>
+      </table>
+      <img class="googleLogo" src="img/google.png">
+    </div>
+
+    <div id="fullView" data-display="flex">
+        <div class="fullVFrmCon">
+            <form id="frmAppUpdate" class=" gFullFrm">
+                <div class="d-flex justify-content-center align-items-center min-vh-100">
+                    <div class="text-center">
+
+                    <div class="mb-4">
+                        <img src="img/jobTrackLogo.png"
+                            alt="JobTrack"
+                            style="height:70px;">
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-semibold mb-1">
+                        Checking for updates
+                    </h5>
+                    <p class="text-muted small mb-0">
+                        Please wait while we make sure you have the latest version.
+                    </p>
+
+                    </div>
+                </div>
+            </form>
+
+            <form id="frmRegDevice" class="gFullFrm">
+                <header class="fullVHeader">
+                    <img class="logo" src="img/jobTrackLogo.png" alt="">
+                </header>
+
+                <div class="gFrmBody">
+                    <label class="gLabel">
+                        Registration code
+                        <input type="text" name="code">
+                    </label>
+                </div>
+                <footer class="gFrmFooter">
+                    <div class="gBtnSave js_btnSave">
+                        Register
+                    </div>
+                </footer>
+            </form>
+
+        </div>
+    </div>
+    <div id="appView" data-display="grid">
+        <header class="appViewHeader">
+            <img class="logo" src="img/jobTrackLogo.png" alt="">
+            <ul id="appViewMenuCon">
+                <li id="appViewBtnJobDash">Jobs</li>
+                <li id="appViewBtnProjDash">Proj.</li>
+                <li id="appViewBtnQuoteDash">Quote</li>
+            </ul>
+            <div class="userBox">
+                <span id="appVUserName"></span>
+                <span id="appVCar"></span>
+            </div>
+        </header>
+        <div id="appViewDropMenu" class="mainDropDown" data-status="close" tabindex="0">
+            <div id="appViewDMenuVehicleExp">Vehicle Expenses / Fuel</div>
+            <div id="appViewDMenuOfficeExp">Office Expenses</div>
+            <div id="appViewDMenuToolsExp">Tools/Equipment Expenses</div>
+        </div>
+        <div class="appViewBody">
+            <form id="frmJobDash" class="gFrm">
+                <div id="frmJobDashOfflineCon" class="offlineCon">
+                    <table>
+                        <thead>
+                            <th>Offline Data description</th>
+                            <th></th>
+                        </thead>
+                        <tbody class="js_TblOfflineBody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <header class="gFrmHeader">
+                      Jobcard dashboard
+                </header>
+                <div class="gFrmBody">
+                    <div>
+                        <input type="text" name="search" class="gInput" placeholder="Search">
+                    </div>
+                    <div id="frmJobDashJobsCon" class="jobsCon">
+
+                    </div>
+                </div>
+            </form>
+            <form id="frmJob" class="gFrm">
+                <header class="gFrmHeader">
+                      Jobcard
+                      <span class="js_jobNo js_dbLbl"></span>
+                </header>
+                <div class="gFrmBody">
+                  <div class="btnAcceptJobCon">
+                        <div class="js_BtnAcceptJob btnAcceptJob">
+                            <span>Accept</span>
+                            <span>Job</span>
+                        </div>  
+                  </div>  
+                  <datalist id="frmJobSupplierDataList" class="supplierDataList"></datalist>
+                  <div class="sectionCon">
+                    <span class="secHeader">Client details</span>
+                    <div class="clientName js_clientName"></div>
+                    <div class="clientPhoneCon">
+                        <div class="contactCon js_phone1Con">
+                            <div class="phoneCon">
+                                    <span class="js_phone1 js_dbLbl"></span>
+                                    <span class="js_phone1Desc js_dbLbl"></span>
+                            </div>
+                            <div class="imgsCon">
+                                <img id="frmJobBtnWhatsA1" class="contactImg" src="img/whatsapp.png">
+                                <img id="frmJobBtnCall1" class="contactImg" src="img/call.png">
+                            </div>
+                        </div>
+                        <div class="contactCon js_phone2Con">
+                            <div class="phoneCon">
+                                    <span class="js_phone2 js_dbLbl"></span>
+                                    <span class="js_phone2Desc js_dbLbl"></span>
+                            </div>
+                            <div class="imgsCon">
+                                <img id="frmJobBtnWhatsA2" class="contactImg" src="img/whatsapp.png">
+                                <img id="frmJobBtnCall2" class="contactImg" src="img/call.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clientAddCon">
+                        <span class="js_clientAdd js_dbLbl"></span>
+                        <div id="frmJobBtnMaps" class="gBtnSave">
+                            Open Address in maps
+                        </div>
+                    </div>
+
+                    <div class="sectionCon">
+                        <input type="text" name="locationName" class="gFrmInput" placeholder="Location name" maxlength="50">
+                        <div class="doubleInput">
+                            <input type="number" name="lat" class="gFrmInput" placeholder="Latitude" style="width: 50%;">
+                            <input type="number" name="lng" class="gFrmInput" placeholder="Longitude" style="width: 50%;">
+                        </div>
+                        <div class="js_BtnGetGPS gBtnSave">Get GPS Coordinates</div>
+                        <div class="js_BtnGoToLocation gBtnSave">Open Location in Maps</div>
+                    </div>
+                    <div class="js_note">
+
+                    </div>
+                  </div>
+                  <div class="sectionCon">
+                        <div class="tblCaption">
+                            <span class="secHeader js_LblHoursHeader">Job hours</span>
+                        </div>
+                        <div class="timerCon">
+                            <div class="btnStartTimer js_BtnStartTime">Start</div>
+                            <div class="timerDisplay js_timer"></div>
+                            <div class="btnEndTimer js_BtnEndTime">End</div>
+                        </div>
+                        <div class="tblJobHoursCon">
+                            <table id="frmJobTblHours" class="tblHours">
+                                <thead>
+                                    <tr>
+                                    <th>Start/End</th>
+                                    <th>Hours</th>
+                                    <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+        
+                                </tbody>
+                            </table>
+                        </div>
+  
+                  </div>
+                  <div class="sectionCon">
+                    <span class="secHeader">Job summary</span>
+                        <textarea name="report" class="report"></textarea>                
+                  </div>
+                  <div class="sectionCon">
+                        <div class="gFrmSecHeader">Work Items</div>
+                        <div class="tblCaption">
+                            <div class="gDoubleInputCon">
+                                <div style="width: 30%;">
+                                    <smart-search class="js_prodCode"
+                                        storage-type="localStorage.offlineData"
+                                        storage-key="prods" 
+                                        search-fields="prodCode" 
+                                        display-fields="prodCode,title"
+                                        search-mode="exact"
+                                        min-chars="3" 
+                                        placeholder="Search Code">                                >
+                                    </smart-search>
+
+                                </div>
+                                <div style="width: 70%;">
+                                    <smart-search class="js_prodTitle"
+                                        storage-type="localStorage.offlineData"
+                                        storage-key="prods" 
+                                        search-fields="title" 
+                                        display-fields="prodCode,title"
+                                        search-mode="exact"
+                                        min-chars="3" 
+                                        placeholder="Search Title">
+                                    </smart-search>
+
+                                </div>
+
+                            </div>
+
+                            <input name="product"  type="text" class="gFrmInput" maxlength="150" placeholder="Product" required>
+                            <div class="gjs_textareaCon">
+                                <textarea class="frmTCTextArea" name="prodDescr" rows="2" data-maxlength="300" placeholder="Product description"></textarea>
+                                <span></span>
+                            </div>
+                            <input name="prodQty" type="number" class="qtyInput gFrmInput" step="0.001" placeholder="Qty">
+
+                            <div class="gBtnBox">
+                                <div id="frmJobBtnAddJobItem" class="gBtnSave">
+                                    Add Item
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tblCaption">
+                            <span class="secHeader">Job List</span>
+                        </div>
+                        <table id="frmJobTblItems" class="tblItems">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Descr</th>
+                                <th>Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+    
+                        </table>
+                  </div>
+                  <div class="sectionCon">
+                        <div class="invCon">
+                            <span class="secHeader">Supplier Invoices</span>
+                            <label class="invCardCon">
+                                <input type="checkbox" name="invCard" class="invCardInput">Paid with Card
+                            </label>
+                            <select name="suppID" class="gInput" data-noValue="null" required></select>
+
+                            <div class="gjs_textareaCon">
+                                <textarea class="frmTCTextArea" name="descr" rows="3" data-maxlength="150" placeholder="Expense description"></textarea>
+                                <span></span>
+                            </div>
+                            <div class="doubleInput">
+                                <input type="text" name="invNo" class="gInput" maxlength="15" placeholder="Invoice No." required>
+                                <input type="number" name="invAmount" step="0.01" class="gInput" placeholder="Amount" required>
+                            </div>
+                            <div class="addPhotoCon">
+                                <img src="" class="js_invPhoto invPhoto">
+                                <img src="img/btnPhoto.png" class="js_BtnInvPhoto btnPhoto">
+                            </div>
+                            <div class="gBtnBox">
+                                <div id="frmJobBtnAddInv" class="gBtnSave">
+                                    Add Supp. Invoice
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="tblSupInvsCon">
+                            <table id="frmJobTblInv" class="tblInv">
+                                <thead>
+                                    <tr>
+                                        <th>Company Name</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            
+                                </tbody>
+            
+                                </table>
+                        </div>
+  
+                  </div>
+                  <div class="sectionCon">
+                        <div class="tblCaption">
+                            <span class="secHeader">Notes</span>
+                            <div id="frmJobBtnAddNote" class="gBtnSave">
+                                Add Note
+                            </div>
+        
+                        </div>
+                        <div class="notesCon">
+                            
+                        </div>
+    
+                  </div>
+                  <div class="sectionCon">
+                        <div class="tblCaption">
+                            <span class="secHeader">Job Attachments</span>
+        
+                        </div>
+                        <div class="attachsCon js_jobAttachsCon">
+                            
+                        </div>
+    
+                  </div>
+                  <div class="sectionCon">
+                        <div class="tblCaption">
+                            <span class="secHeader">Client Attachments</span>
+        
+                        </div>
+                        <div class="attachsCon js_clientAttachsCon">
+                            
+                        </div>
+    
+                  </div>
+                  
+                </div>
+                <div class="gFrmFooter">
+                    <div id="frmJobBtnClientSign" class="footerBtn">
+                        Client sign off
+                    </div>
+                </div>
+            </form>
+            <form id="frmQuote" class="gFrm">
+                <header class="gFrmHeader">
+                      Quote
+                      <span class="js_quoteNo js_dbLbl"></span>
+                </header>
+                <div class="gFrmBody">
+
+                    <div class="btnAcceptJobCon">
+                        <div class="js_BtnAcceptJob btnAcceptJob">
+                            <span>Accept</span>
+                            <span>Quote</span>
+                        </div>  
+                    </div>  
+
+                    <div class="gFrmSectionCon">
+                        <span class="gFrmSecHeader">Site Details</span>
+                        <div class="clientName js_clientName"></div>
+                        <div class="clientPhoneCon">
+                            <div class="gFrmSecSubHeader">Contact numbers</div>
+                            <div class="contactCon js_phone1Con">
+                                <div class="phoneCon">
+                                        <span class="js_phone1 js_dbLbl"></span>
+                                        <span class="js_phone1Desc js_dbLbl"></span>
+                                </div>
+                                <div class="imgsCon">
+                                    <img id="frmQuoteBtnWhatsA1" class="contactImg" src="img/whatsapp.png">
+                                    <img id="frmQuoteBtnCall1" class="contactImg" src="img/call.png">
+                                </div>
+                            </div>
+                            <div class="contactCon js_phone2Con">
+                                <div class="phoneCon">
+                                        <span class="js_phone2 js_dbLbl"></span>
+                                        <span class="js_phone2Desc js_dbLbl"></span>
+                                </div>
+                                <div class="imgsCon">
+                                    <img id="frmQuoteBtnWhatsA2" class="contactImg" src="img/whatsapp.png">
+                                    <img id="frmQuoteBtnCall2" class="contactImg" src="img/call.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clientAddCon">
+                            <div class="gFrmSecSubHeader">Site address</div>
+                            <span class="js_clientAdd js_dbLbl"></span>
+                            <div id="frmQuoteBtnMaps" class="gBtnSave">
+                                Open maps
+                            </div>
+                        </div>
+                        <div>
+                            <div class="gFrmSecSubHeader">Access note</div>
+                            <div class="js_note">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="gFrmSectionCon">
+                        <div class="gFrmSecHeader">Work Items</div>
+                        <div class="tblCaption">
+                            <div class="gDoubleInputCon">
+                                <div style="width: 30%;">
+                                    <smart-search class="js_prodCode"
+                                        storage-type="localStorage.offlineData"
+                                        storage-key="prods" 
+                                        search-fields="prodCode" 
+                                        display-fields="prodCode,title"
+                                        search-mode="exact"
+                                        min-chars="3" 
+                                        placeholder="Search Code">                                >
+                                    </smart-search>
+
+                                </div>
+                                <div style="width: 70%;">
+                                    <smart-search class="js_prodTitle"
+                                        storage-type="localStorage.offlineData"
+                                        storage-key="prods" 
+                                        search-fields="title" 
+                                        display-fields="prodCode,title"
+                                        search-mode="exact"
+                                        min-chars="3" 
+                                        placeholder="Search Title">
+                                    </smart-search>
+
+                                </div>
+
+                            </div>
+
+                            <input name="product" list="frmQuoteProdDataList" type="text" class="gFrmInput" maxlength="150" placeholder="Product" required>
+                            <div class="gjs_textareaCon">
+                                <textarea class="frmTCTextArea" name="prodDescr" rows="2" data-maxlength="300" placeholder="Product description"></textarea>
+                                <span></span>
+                            </div>
+                            <input name="prodQty" type="number" class="qtyInput gFrmInput" step="0.001" placeholder="Qty">
+
+                            <div class="gBtnBox">
+                                <div id="frmQuoteBtnAddJobItem" class="gBtnSave">
+                                    Add Item
+                                </div>
+                            </div>
+                        </div>
+                        <span class="gFrmSecSubHeader">Job List</span>
+                        <div class="tblItmesCon">
+                            <table id="frmQuoteTblItems" class="tblItems">
+                                <thead>
+                                    <tr>
+                                    <th>Descr</th>
+                                    <th>Qty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+        
+                                </tbody>
+        
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tblCaption">
+                        <span class="secHeader">Hours needed</span>  
+                    </div>
+                    <div class="js_estHoursCon estHoursCon">
+                        <input type="number" name="estHours" class="gFrmInput estHours" step="0.01" placeholder="Est. Hours">
+                        <span class="js_disEstHours"></span>
+                    </div>
+
+                    <div class="invCon">
+                        <span class="secHeader">Supplier Quote</span>
+                        <div class="doubleInput">
+                              <input type="text" name="suppName" class="gInput" placeholder="Company name">  
+                              <input type="number" name="suppAmount" step="0.01" class="gInput" placeholder="Amount">
+                        </div>
+                        <div class="addPhotoCon">
+                              <img src="" class="js_invPhoto invPhoto">
+                              <img src="img/btnPhoto.png" class="js_BtnInvPhoto btnPhoto">
+                        </div>
+                        <div class="gBtnBox">
+                              <div class="gBtnSave js_BtnAddInv">
+                                  Add Supp. Quote
+                              </div>
+                        </div>
+                        
+                    </div>
+                    <table id="frmQuoteTblInv" class="tblInv">
+                      <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Amount</th>
+                          </tr>
+                        </thead>
+                      <tbody class="js_tblSuppQuote">
+  
+                      </tbody>
+  
+                    </table>
+  
+
+                    <div class="tblCaption">
+                        <span class="secHeader">Notes</span>
+                        <div id="frmQuoteBtnAddNote" class="gBtnSave">
+                            Add Note
+                        </div>
+                    </div>
+                    <div class="notesCon">
+                    
+                    </div>
+                      
+
+                </div>
+                <div class="gFrmFooter">
+                    <div id="frmQuoteBtnComplete" class="footerBtn">
+                        Servey complete
+                    </div>
+                </div>
+            </form>
+            <form id="frmPhoto" class="gFrm">
+                <header class="gFrmHeader js_frmHeader">
+                    Photo
+                </header>
+                <div class="gFrmBody">
+                    <input name="file" type="file" style="display:none;">
+                    <div id="frmPhotoImgCon" class="imgCon">
+                        <img id="frmPhotoImg" class="img">
+                    </div>
+
+                    <div class="gAlignCener">
+                        <div class="gBtnPhoto js_btnPhoto">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="gFrmFooter">
+                    <div class="js_btnBack gBtnBack">
+                        Back
+                    </div>
+                    <div class="js_btnSave gBtnSave">
+                        Save
+                    </div>
+                </div>
+            </form>
+            <form id="frmSig" class="gFrm">
+              <div class="frmDetails">
+                <div class="sigCon">
+                  <canvas id="frmSigCanvas" class="canvas"></canvas>
+                </div>
+                <div class="clearSigCon">
+                    <div id="frmSigBtnClear" class="gBtnBack">
+                        Clear signiture
+                    </div>
+                </div>
+                <footer class="gFrmFooter">
+                  <div id="frmSigBtnBack" class="gBtnBack">
+                      Back
+                  </div>
+                  <div id="frmSigBtnSave" class="gBtnSave">
+                    Submit
+                  </div>
+                </footer>
+              </div>
+            </form>
+            <form id="frmJobSign" class="gFrm">
+                <header class="gFrmHeader">
+                    Job completed
+                </header>
+                <div class="gFrmBody">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Task completed</th>
+                          </tr>
+                          <tbody id="frmJobSignTblListBody">
+
+                          </tbody>
+                      </thead>
+                  </table>
+
+                </div>
+                <footer class="gFrmFooter">
+                    <div class="gBtnBack js_btnBack">
+                        Back
+                    </div>
+                    <div id="frmJobSignBtnClientSig" class="gBtnSave">
+                        Client signiture
+                    </div>
+                </footer>
+            </form>
+            <form id="frmVehicleExp" class="gFrm">
+                <header class="gFrmHeader">Vehicle Expenses</header>
+                <div class="gFrmBody">
+                    <div class="js_expTypeCon">
+                        <div class="js_tabStock" data-panel=".js_stockPanel" data-exp_type="stock">Vehicle Stock</div>
+                        <div data-panel=".js_fuelPanel" data-exp_type="fuel">Fuel</div>
+                    </div>
+                    <div class="js_panelsCon">
+                        <div class="js_stockPanel">
+                            <div class="invCon">
+                                <span class="gFrmSecHeader">Supplier Invoices</span>
+                                <label class="gLabel">
+                                    Select vehicle:
+                                    <select name="vehicleID" class="vehicleIDSelect stockVehicleID"></select>
+                                </label>
+
+                                <label class="invCardCon">
+                                    <input type="checkbox" name="payCard" class="invCardInput">
+                                    Paid with Card
+                                </label>
+
+                                <label class="gLabel">
+                                    <input name="invDate" type="date" required>
+                                </label>
+                                <label class="gLabel">
+                                    <select name="suppID" class="gInput" required data-noValue="null"></select>
+                                </label>
+                                <div class="gjs_textareaCon">
+                                    <textarea class="frmTCTextArea" name="descr" rows="3" data-maxlength="150" placeholder="Expense description"></textarea>
+                                    <span></span>
+                                </div>
+                                <div class="doubleInput">
+                                    <input type="text" name="invNo" class="gInput" placeholder="Invoice No." required maxlength="15" data-noValue="N/A">
+                                    <input type="number" name="invAmount" step="0.01" class="gInput" placeholder="Amount" required>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="js_fuelPanel">
+                            <label class="gLabel">
+                                Select vehicle:
+                                <select name="vehicleID" class="vehicleIDSelect fuelVehicleID" required></select>
+                            </label>
+
+                            <div class="gDoubleInputCon">
+                                <label class="gLabel">
+                                    Date:
+                                    <input name="transDate" type="date" required>
+                                </label>
+                                <label class="gLabel">
+                                    Vehicle ODO reading:
+                                    <input name="odo" type="number" required>
+                                </label>
+                            </div>
+                            <div class="gDoubleInputCon">
+                                <label class="gLabel">
+                                    Litres:
+                                    <input name="liters" type="number" step="0.001" required>
+                                </label>
+                                <label class="gLabel">
+                                    Amount:
+                                    <input name="amount" type="number" step="0.01" required>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="photoCon">
+                        <img class="js_photo invPhoto" src="">
+                        <img class="js_BtnPhoto gBtnPhoto" src="img/btnPhoto.png">
+                    </div>
+                    <div class="submitBtnCon">
+                        <div class="gBtnSave js_BtnSave">
+                            Submit
+                        </div>
+    
+                    </div>
+                    <div class="uploadedCon">
+                        <span class="gFrmSecHeader js_lblUpHeader">Your last uploads</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js_tblUpBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>    
+            </form>
+            <form id="frmGetGPS" class="gFrm">
+                <header class="gFrmHeader">
+                    Location
+                </header>
+                <div class="gFrmBody">
+                    <div class="btnGetGPSCon">
+                            <div class="js_BtnGetGPS btnGetGPS">
+                                <span>GET</span>
+                                <span>GPS</span>
+                            </div>  
+                    </div>  
+
+                    <div class="location-card">
+                        <h3>Device GPS Coordinates</h3>
+                        <hr>
+                        <div class="data-row">
+                            <span class="label">Latitude:</span>
+                            <span  class="value js_lat">Pending...</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="label">Longitude:</span>
+                            <span class="value js_lng">Pending...</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="label">Accuracy:</span>
+                            <span class="value js_accuracy">Pending...</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="label">Status:</span>
+                            <span class="value js_status">Waiting for user...</span>
+                        </div>
+                    </div>                    
+                </div>
+                <footer class="gFrmFooter">
+                    <div class="gBtnBack js_BtnBack">
+                        Back
+                    </div>
+                    <div class="gBtnSave js_BtnSave">
+                        Save Location
+                    </div>
+                </footer>
+            </form>
+            <form id="frmFileViewer" class="gFrm">
+                <div class="viewer-header">
+                    <div class="js_BtnBack btnClose">✕ Close</div>
+                </div>
+                <div id="viewerBody" class="viewer-body">
+                </div>
+            </form>            
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

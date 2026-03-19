@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Admin</title>
+  </head>
+  <body>
+      <form id="frmTest">
+
+        <select name="test">
+            <option value="">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+
+      </form>
+      <script type="text/javascript">
+          console.log(window.frmTest.test.value);
+          window.frmTest.test.onchange = function () {
+              console.log(this.value);
+          }
+      </script>
+  </body>
+</html>
