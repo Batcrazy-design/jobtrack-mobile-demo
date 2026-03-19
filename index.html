@@ -770,5 +770,66 @@
     </div>
 
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+	
+	<script>
+(function () {
+  if (!location.hostname.includes('github.io')) return;
+
+  function bypassRegister() {
+    var fullView = document.getElementById('fullView');
+    var appView = document.getElementById('appView');
+    var userName = document.getElementById('appVUserName');
+    var car = document.getElementById('appVCar');
+    var jobBtn = document.getElementById('appViewBtnJobDash');
+    var projBtn = document.getElementById('appViewBtnProjDash');
+    var quoteBtn = document.getElementById('appViewBtnQuoteDash');
+    var jobDash = document.getElementById('frmJobDash');
+
+    if (fullView) {
+      fullView.style.display = 'none';
+      fullView.style.visibility = 'hidden';
+    }
+
+    if (appView) {
+      appView.style.display = 'grid';
+      appView.style.visibility = 'visible';
+    }
+
+    if (userName) userName.textContent = 'Demo User';
+    if (car) car.textContent = 'Demo Vehicle';
+
+    document.querySelectorAll('#appViewMenuCon li').forEach(function (li) {
+      li.classList.remove('selected');
+      li.classList.remove('active');
+    });
+
+    if (jobBtn) {
+      jobBtn.classList.add('selected');
+      jobBtn.classList.add('active');
+    }
+
+    document.querySelectorAll('.appViewBody .gFrm').forEach(function (frm) {
+      frm.style.display = 'none';
+    });
+
+    if (jobDash) {
+      jobDash.style.display = 'flex';
+      jobDash.style.visibility = 'visible';
+    }
+
+    var dropMenu = document.getElementById('appViewDropMenu');
+    if (dropMenu) {
+      dropMenu.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('load', function () {
+    bypassRegister();
+    setTimeout(bypassRegister, 300);
+    setTimeout(bypassRegister, 800);
+    setTimeout(bypassRegister, 1500);
+  });
+})();
+</script>
   </body>
 </html>

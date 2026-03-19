@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mobileJobTrack-sw-v32';
+const CACHE_NAME = 'mobileJobTrack-sw-v34';
 const FILES_TO_CACHE = [
 'index.html',
 'css/index.css',
