@@ -5,64 +5,293 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JobTrack Demo</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/index.css">
-</head>
-<body style="background:#f5f7fb;">
+  <style>
+    body{
+      background:#f5f7fb;
+      font-family:Arial, sans-serif;
+      margin:0;
+    }
 
-  <div id="appView" style="display:grid !important;">
+    .demo-shell{
+      max-width:480px;
+      margin:0 auto;
+      min-height:100vh;
+      background:#f5f7fb;
+    }
+
+    .appViewHeader{
+      background:linear-gradient(135deg,#005cac,#01aff1);
+      color:#fff;
+      padding:16px 12px 12px;
+      position:sticky;
+      top:0;
+      z-index:10;
+      box-shadow:0 2px 10px rgba(0,0,0,.12);
+    }
+
+    .appViewHeader .logo{
+      display:block;
+      margin:0 auto 10px;
+      max-height:42px;
+    }
+
+    #appViewMenuCon{
+      display:flex;
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    #appViewMenuCon li{
+      flex:1;
+      text-align:center;
+      padding:10px 8px;
+      border:1px solid #ffffff;
+      border-radius:12px;
+      background:rgba(255,255,255,.18);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    #appViewMenuCon li.active{
+      background:#fff;
+      color:#005cac;
+    }
+
+    .userBox{
+      margin-top:10px;
+      text-align:center;
+      font-size:14px;
+    }
+
+    .userBox span{
+      display:block;
+    }
+
+    .appViewBody{
+      padding:12px;
+    }
+
+    .demo-panel{
+      display:none;
+    }
+
+    .demo-panel.active{
+      display:block;
+    }
+
+    .gFrm{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 4px 16px rgba(0,0,0,.08);
+      overflow:hidden;
+      margin-bottom:16px;
+    }
+
+    .gFrmHeader{
+      background:#fff;
+      border-bottom:1px solid #e9ecef;
+      padding:14px 16px;
+      font-size:18px;
+      font-weight:700;
+      color:#1f2d3d;
+    }
+
+    .gFrmBody{
+      padding:14px;
+    }
+
+    .gInput{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid #ced4da;
+      border-radius:10px;
+      margin-bottom:12px;
+      background:#fff;
+    }
+
+    .job-card{
+      background:#fff;
+      border:1px solid #e9ecef;
+      border-radius:14px;
+      padding:12px;
+      margin-bottom:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+      cursor:pointer;
+    }
+
+    .job-card h6{
+      margin:0 0 4px;
+      font-weight:700;
+    }
+
+    .job-card .meta{
+      color:#6c757d;
+      font-size:13px;
+      margin-bottom:6px;
+    }
+
+    .section-card{
+      background:#fff;
+      border:1px solid #e9ecef;
+      border-radius:14px;
+      padding:12px;
+      margin-bottom:12px;
+    }
+
+    .demo-btn{
+      display:inline-block;
+      background:#0d6efd;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      border:none;
+    }
+
+    .contact-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 0;
+      border-bottom:1px solid #eee;
+    }
+
+    .contact-row:last-child{
+      border-bottom:none;
+    }
+
+    .contact-icons{
+      display:flex;
+      gap:8px;
+    }
+
+    .contact-icon{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:#f1f3f5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-shell">
     <header class="appViewHeader">
-      <img class="logo" src="img/jobTrackLogo.png" alt="">
+      <img class="logo" src="img/jobTrackLogo.png" alt="JobTrack">
       <ul id="appViewMenuCon">
-        <li class="selected active">Jobs</li>
-        <li>Proj.</li>
-        <li>Quote</li>
+        <li class="active" data-panel="jobsPanel">Jobs</li>
+        <li data-panel="projectsPanel">Proj.</li>
+        <li data-panel="quotesPanel">Quote</li>
       </ul>
       <div class="userBox">
-        <span id="appVUserName">Demo User</span>
-        <span id="appVCar">Demo Vehicle</span>
+        <span>Demo User</span>
+        <span>Toyota Hilux</span>
       </div>
     </header>
 
     <div class="appViewBody">
-      <form id="frmJobDash" class="gFrm" style="display:flex;">
-        <header class="gFrmHeader">Jobcard dashboard</header>
-        <div class="gFrmBody">
-          <div>
-            <input type="text" class="gInput" placeholder="Search">
+      <div id="jobsPanel" class="demo-panel active">
+        <div class="gFrm">
+          <div class="gFrmHeader">Jobcard dashboard</div>
+          <div class="gFrmBody">
+            <input class="gInput" placeholder="Search">
+            <div class="job-card" onclick="alert('Demo only')">
+              <h6>JOB-1001</h6>
+              <div class="meta">Emergency call out</div>
+              <div>Client: Demo Client</div>
+              <div>Area: Great Brak River</div>
+            </div>
+            <div class="job-card" onclick="alert('Demo only')">
+              <h6>JOB-1002</h6>
+              <div class="meta">Emergency attendance</div>
+              <div>Client: Sample Client</div>
+              <div>Area: Mossel Bay</div>
+            </div>
           </div>
+        </div>
 
-          <div class="jobsCon">
-            <div class="card mb-3 shadow-sm border-0 rounded-4">
-              <div class="card-body">
-                <h5 class="mb-1">JOB-1001</h5>
-                <div class="text-muted small mb-2">Emergency call out</div>
-                <div>Client: Demo Client</div>
-                <div>Area: Great Brak River</div>
+        <div class="gFrm">
+          <div class="gFrmHeader">Client details</div>
+          <div class="gFrmBody">
+            <div class="section-card">
+              <strong>John Smith</strong>
+              <div class="contact-row">
+                <div>
+                  <div>082 111 1003</div>
+                  <small class="text-muted">Mobile</small>
+                </div>
+                <div class="contact-icons">
+                  <div class="contact-icon">💬</div>
+                  <div class="contact-icon">📞</div>
+                </div>
               </div>
-            </div>
-
-            <div class="card mb-3 shadow-sm border-0 rounded-4">
-              <div class="card-body">
-                <h5 class="mb-1">JOB-1002</h5>
-                <div class="text-muted small mb-2">Emergency attendance</div>
-                <div>Client: Sample Client</div>
-                <div>Area: Mossel Bay</div>
-              </div>
-            </div>
-
-            <div class="card mb-3 shadow-sm border-0 rounded-4">
-              <div class="card-body">
-                <h5 class="mb-1">QUO-2041</h5>
-                <div class="text-muted small mb-2">Site inspection quote</div>
-                <div>Client: Demo Property Group</div>
-                <div>Area: George</div>
+              <div class="contact-row">
+                <div>
+                  <div>044 111 2000</div>
+                  <small class="text-muted">Office</small>
+                </div>
+                <div class="contact-icons">
+                  <div class="contact-icon">💬</div>
+                  <div class="contact-icon">📞</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </form>
+      </div>
+
+      <div id="projectsPanel" class="demo-panel">
+        <div class="gFrm">
+          <div class="gFrmHeader">Projects dashboard</div>
+          <div class="gFrmBody">
+            <div class="section-card">
+              <strong>Project Alpha</strong>
+              <div class="text-muted">3 active tasks</div>
+            </div>
+            <div class="section-card">
+              <strong>Project Bravo</strong>
+              <div class="text-muted">1 pending review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="quotesPanel" class="demo-panel">
+        <div class="gFrm">
+          <div class="gFrmHeader">Quote dashboard</div>
+          <div class="gFrmBody">
+            <div class="section-card">
+              <strong>QUO-2041</strong>
+              <div class="text-muted mb-2">Site inspection quote</div>
+              <button class="demo-btn" onclick="alert('Demo only')">Open Quote</button>
+            </div>
+            <div class="section-card">
+              <strong>QUO-2042</strong>
+              <div class="text-muted mb-2">Repair estimate</div>
+              <button class="demo-btn" onclick="alert('Demo only')">Open Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <script>
+    document.querySelectorAll('#appViewMenuCon li').forEach(tab => {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('#appViewMenuCon li').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById(this.dataset.panel).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
